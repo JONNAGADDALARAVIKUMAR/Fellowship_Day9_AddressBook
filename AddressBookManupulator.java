@@ -7,13 +7,17 @@ public class AddressBookManupulator {
 	
 	HashMap<String, DetailsCollector> contacts = new HashMap<String, DetailsCollector>();
 	static Scanner scanner = new Scanner(System.in);
-	static AddressBookManupulator addressBookManupulator = new AddressBookManupulator();
-	
+	int choice = 1;
 	public void choice() {
-	
-		DetailsCollector collect = addressBookManupulator.getUserInput();
-		contacts.put(collect.getEmailId(), collect);
-		System.out.println(contacts);
+		
+		while(choice == 1) {
+			System.out.println("Add new Contact");
+			DetailsCollector collect = getUserInput();
+			contacts.put(collect.getEmailId(), collect);
+			System.out.println(contacts);
+			System.out.println("Do you want to add Another Contact\n\t1.Yes\n\t2.No");
+			choice = scanner.nextInt();
+		}
 	}
 	
 	private DetailsCollector getUserInput() {
