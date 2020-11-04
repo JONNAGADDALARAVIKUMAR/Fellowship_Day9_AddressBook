@@ -60,8 +60,13 @@ public class DetailsCollector {
 	}
 	@Override
 	public String toString() {
-		return "DetailsCollector [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
-				+ ", city=" + city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", emailId="
-				+ emailId + "]";
+		return "DetailsCollector [firstName=" + firstName + ","
+								+ "lastName=" + lastName + ", "
+								+ "address=" + address +","
+								+ "city=" + city + ","
+								+ "state=" + state + ", "
+								+ "zip=" + zip + ", "
+								+ "phoneNumber=" + phoneNumber + ", "
+								+ "emailId="+ emailId + "]";
 	}
 }
