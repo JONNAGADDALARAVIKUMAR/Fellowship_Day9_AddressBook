@@ -10,7 +10,7 @@ public class AddressBookManupulator {
 	static Scanner scanner = new Scanner(System.in);
 	
 	int choice = 1;
-	public void userChoice() {
+	public HashMap<String, DetailsCollector> userChoice() {
 		
 		while(choice != 5) {
 			switch (choice) {
@@ -52,6 +52,8 @@ public class AddressBookManupulator {
 			}
 		}
 		System.out.println("\n\tProgram Terminated");
+		choice = 1;
+		return contacts;
 	}
 	
 	private DetailsCollector getUserInput() { //Takes Input from User
