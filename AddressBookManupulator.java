@@ -8,6 +8,7 @@ public class AddressBookManupulator {
 	
 	HashMap<String, DetailsCollector> contacts = new HashMap<String, DetailsCollector>();
 	static Scanner scanner = new Scanner(System.in);
+	String mail;
 	
 	int choice = 1;
 	public HashMap<String, DetailsCollector> userChoice() {
@@ -72,8 +73,8 @@ public class AddressBookManupulator {
 	        String state = scanner.next();
 	        System.out.print("Phone Number : ");
 	        long phone = scanner.nextLong();
-	        System.out.print("Email Id : ");
-	        String emailId = scanner.next();
+	        System.out.print("Email : ");
+	        String email = getmail();
 	        
 	        DetailsCollector collect = new DetailsCollector(); //POJO class
 	        
@@ -84,11 +85,26 @@ public class AddressBookManupulator {
 	        collect.setZip(zip);
 	        collect.setState(state);
 	        collect.setPhoneNumber(phone);
-	        collect.setEmailId(emailId);
+	        collect.setEmailId(email);
 		
 	        return collect;
 	}
 	
+	private String getmail() {
+		boolean check = true;
+		
+		while(check) {
+			mail = scanner.next();
+			if(contacts.containsKey(mail))
+				System.out.print("\nContact Exist\nEmail : ");
+			else {
+				check = false;
+			}
+		}
+		return mail;
+		
+	}
+
 	private void readContacts() { //Method to read all contacts
 		
 		Set<String> allKeys = contacts.keySet(); //Stores All Unique Contact Keys

@@ -3,8 +3,6 @@ package day9AddressBook;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import completeAddressBook.AddressBook;
-
 public class AddressBookMainClass {
 
 	public static void main(String[] args) {
