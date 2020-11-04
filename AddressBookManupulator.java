@@ -12,30 +12,35 @@ public class AddressBookManupulator {
 	int choice = 1;
 	public void userChoice() {
 		
-		while(choice != 4) {
+		while(choice != 5) {
 			switch (choice) {
 			
 				case 1://Adds contact
 					System.out.println("Add new Contact");
 					DetailsCollector collect = getUserInput();
 					contacts.put(collect.getEmailId(), collect);
-					System.out.print("\n1.Create New Contact\n2.Read Existing Contact\n3.Update Existing Contact\n4.Exit\nOption : ");
+					System.out.print("\n1.Create New Contact\n2.Read Existing Contact\n3.Update Existing Contact\n4.Delete Existing Contact\n5.Exit\nOption : ");
 					choice = scanner.nextInt();
 					break;
 					
 				case 2: //Reads Contact
 					readContacts();
-					System.out.print("\n1.Create New Contact\n2.Read Existing Contact\n3.Update Existing Contact\n4.Exit\nOption : ");
+					System.out.print("\n1.Create New Contact\n2.Read Existing Contact\n3.Update Existing Contact\n4.Delete Existing Contact\n5.Exit\nOption : ");
 					choice = scanner.nextInt();
 					break;
 
 				case 3: //Updates Contact
 					updateContacts();
-					System.out.print("\n1.Create New Contact\n2.Read Existing Contact\n3.Update Existing Contact\n4.Exit\nOption : ");
+					System.out.print("\n1.Create New Contact\n2.Read Existing Contact\n3.Update Existing Contact\n4.Delete Existing Contact\n5.Exit\nOption : ");
+					choice = scanner.nextInt();
+					break;
+				case 4: //Deletes Contact
+					deleteContacts();
+					System.out.print("\n1.Create New Contact\n2.Read Existing Contact\n3.Update Existing Contact\n4.Delete Existing Contact\n5.Exit\nOption : ");
 					choice = scanner.nextInt();
 					break;
 				
-				case 4: //Terminates Program
+				case 5: //Terminates Program
 					break;
 				
 				default: //If User Enters Invalid
@@ -86,7 +91,7 @@ public class AddressBookManupulator {
 		
 		Set<String> allKeys = contacts.keySet(); //Stores All Unique Contact Keys
 		
-		System.out.println("Enter Which contact you want to update");
+		System.out.println("\nEnter Which contact you want to Read");
 		for(String key : allKeys) {
 			System.out.println(key);
 		}
@@ -115,7 +120,7 @@ public class AddressBookManupulator {
 	}
 	private void updateContacts() { //Updates Contacts
 		
-		System.out.println("Enter Which contact you want to update");
+		System.out.println("\nEnter Which contact you want to update");
 		
 		Set<String> allKeys = contacts.keySet(); //Stores All Unique Contact Keys
 		
@@ -133,7 +138,7 @@ public class AddressBookManupulator {
 			int updateDoneOption = 1;
 			while(updateDoneOption == 1) { //Runs Until Completion of Multiple Updates on a contact
 				
-				System.out.println("Enter Choice to change");
+				System.out.println("\nEnter Choice to Update");
 				System.out.println("\n\t1.First Name\t:\t"+showDetailsToUpdate.getFirstName()
 									+"\n\t2.Last Name\t:\t"+showDetailsToUpdate.getLastName()
 									+"\n\t3.Address\t:\t"+showDetailsToUpdate.getAddress()
@@ -235,6 +240,22 @@ public class AddressBookManupulator {
 		}
 		else {
 			System.out.println("\nInvalid Key !!!");
+		}
+	}
+	private void deleteContacts() {
+		
+		Set<String> allKeys = contacts.keySet(); //Stores All Unique Contact Keys
+		System.out.println("\nEnter Which contact you want to Delete");
+		
+		for(String key : allKeys) {
+			System.out.println(key);
+		}
+		System.out.print("Key : ");
+		String deleteWithKey = scanner.next();
+		
+		if(contacts.containsKey(deleteWithKey)) { //Deletes Contact based on Entered Unique Key
+			contacts.remove(deleteWithKey);
+			System.out.println("Deleted Successfully");
 		}
 	}
 }
