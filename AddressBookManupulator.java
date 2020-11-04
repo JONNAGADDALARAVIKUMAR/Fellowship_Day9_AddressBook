@@ -86,7 +86,7 @@ public class AddressBookManupulator {
 		
 		Set<String> allKeys = contacts.keySet(); //Stores All Unique Contact Keys
 		
-		System.out.println("Enter Which contact you want to update");
+		System.out.println("Enter Which contact you want to Read");
 		for(String key : allKeys) {
 			System.out.println(key);
 		}
