@@ -7,6 +7,7 @@ import java.util.Set;
 public class AddressBookManupulator {
 	
 	HashMap<String, DetailsCollector> contacts = new HashMap<String, DetailsCollector>();
+	
 	static Scanner scanner = new Scanner(System.in);
 	String mail;
 	
@@ -274,6 +275,37 @@ public class AddressBookManupulator {
 		if(contacts.containsKey(deleteWithKey)) { //Deletes Contact based on Entered Unique Key
 			contacts.remove(deleteWithKey);
 			System.out.println("Deleted Successfully");
+		}
+	}
+	
+	public void searchByCity(String city) {//Search by City
+		
+		Set<String> allKeys = contacts.keySet();
+		
+		for(String key : allKeys) {
+			
+			DetailsCollector allDetails = contacts.get(key);
+			
+			//System.out.println(allDetails);
+			String getCity = allDetails.getCity();
+			
+			if(getCity.contains(city))
+				System.out.println("Name : "+allDetails.getFirstName()+" "+allDetails.getLastName()+"\tEmail : "+allDetails.getEmailId());
+		}
+	}
+	public void searchByState(String state) { //Search by State
+	
+		Set<String> allKeys = contacts.keySet();
+		
+		for(String key : allKeys) {
+			
+			DetailsCollector allDetails = contacts.get(key);
+			
+			//System.out.println(allDetails);
+			String getState = allDetails.getState();
+
+			if(getState.contains(state))
+				System.out.println("Name : "+allDetails.getFirstName()+" "+allDetails.getLastName()+"\tEmail : "+allDetails.getEmailId());
 		}
 	}
 }

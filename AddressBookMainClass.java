@@ -4,37 +4,70 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddressBookMainClass {
-
+	static AddressBookManupulator familyAddressBook = new AddressBookManupulator();//family Address Book
+	static AddressBookManupulator friendsAddressBook = new AddressBookManupulator();//Friends Address Book
+	static Scanner scan = new Scanner(System.in);
+	
 	public static void main(String[] args) {
 		
+		@SuppressWarnings("rawtypes")
 		HashMap<String, HashMap> addressBooks = new HashMap<String, HashMap>();//Stores Multiple Address Books
 		HashMap<String, DetailsCollector> oneListContacts = new HashMap<String, DetailsCollector>();//Stores Single AddressBook
-		Scanner scan = new Scanner(System.in);
+		
 		
 		System.out.println("\n\tWelcome to Address Book Progrem");
 		
-		AddressBookManupulator familyAddressBook = new AddressBookManupulator();//family Address Book
-		AddressBookManupulator friendsAddressBook = new AddressBookManupulator();//Friends Address Book
+		
 	       
 	    while (true) {
-	        System.out.println("1: for family \n" +
+	        System.out.println( "1: for family \n" +
 	        					"2: for friend \n" +
-	                    		"3: for terminate the program");
+	                    		"3: To Search\n" +
+	        					"4: Exit");
 	        int selectedOption = scan.nextInt();
 	            
-	        if (selectedOption == 1) {
-	            	
+	        switch (selectedOption) {
+	        case 1:
 	        	oneListContacts = familyAddressBook.userChoice();
 	            addressBooks.put("Family", oneListContacts);
-	        }    
-	        else if (selectedOption == 2) {
+	            break;
+	        case 2:
 	        	oneListContacts = friendsAddressBook.userChoice();	
-	        	addressBooks.put("Friend", oneListContacts);    
-	        }    
-	        else if(selectedOption == 3) {
-	        	break;   
-	        }   
+	        	addressBooks.put("Friend", oneListContacts);   
+	        	break;
+	        case 3:
+	        	search();
+	        	break;
+	        case 4:
+	        	System.out.println("\n\tTerminated");
+	        	break;
+	        } 
+	        if(selectedOption == 4)
+	        	break;
 	    }
-	    System.out.println(addressBooks);
+	}
+
+	private static void search() {
+		
+		 System.out.println("\n1.Search by City\n2.Search by State");
+		 int search = scan.nextInt();
+		 switch (search) {
+		 
+		    case 1:
+		    	System.out.print("Enter City : ");
+		    	String city = scan.next();
+		    	familyAddressBook.searchByCity(city);
+		    	friendsAddressBook.searchByCity(city);
+		    	break;
+		    case 2:
+		    	System.out.print("Enter State : ");
+		    	String State = scan.next();
+		    	familyAddressBook.searchByState(State);
+		    	friendsAddressBook.searchByState(State);
+		    	break;
+		    default:
+		    	System.out.println("\nInvalid Entry\n");
+		    	break;
+		}		
 	}
 }
