@@ -56,14 +56,16 @@ public class AddressBookMainClass {
 		    case 1:
 		    	System.out.print("Enter City : ");
 		    	String city = scan.next();
-		    	familyAddressBook.searchByCity(city);
-		    	friendsAddressBook.searchByCity(city);
+		    	int noOfContactsFamilyCity = familyAddressBook.searchByCity(city);
+		    	int noOfContactsFriendsCity = friendsAddressBook.searchByCity(city);
+		    	System.out.println("Number of People in "+city+" are "+(noOfContactsFamilyCity+noOfContactsFriendsCity));
 		    	break;
 		    case 2:
 		    	System.out.print("Enter State : ");
-		    	String State = scan.next();
-		    	familyAddressBook.searchByState(State);
-		    	friendsAddressBook.searchByState(State);
+		    	String state = scan.next();
+		    	int noOfContactsFamilyState = familyAddressBook.searchByState(state);
+		    	int noOfContactsFriendsState = friendsAddressBook.searchByState(state);
+		    	System.out.println("Number of People in "+state+" are "+(noOfContactsFamilyState+noOfContactsFriendsState));
 		    	break;
 		    default:
 		    	System.out.println("\nInvalid Entry\n");

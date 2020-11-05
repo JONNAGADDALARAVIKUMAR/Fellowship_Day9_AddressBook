@@ -1,6 +1,7 @@
 package day9AddressBook;
 
 public class DetailsCollector {
+	
 	private String firstName;
     private String lastName;
     private String address;

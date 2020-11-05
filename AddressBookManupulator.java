@@ -278,9 +278,10 @@ public class AddressBookManupulator {
 		}
 	}
 	
-	public void searchByCity(String city) {//Search by City
+	public int searchByCity(String city) {//Search by City
 		
 		Set<String> allKeys = contacts.keySet();
+		int numOfContaacts = 0;
 		
 		for(String key : allKeys) {
 			
@@ -289,14 +290,18 @@ public class AddressBookManupulator {
 			//System.out.println(allDetails);
 			String getCity = allDetails.getCity();
 			
-			if(getCity.contains(city))
+			if(getCity.contains(city)) {
 				System.out.println("Name : "+allDetails.getFirstName()+" "+allDetails.getLastName()+"\tEmail : "+allDetails.getEmailId());
+				numOfContaacts++;
+			}
 		}
+		return numOfContaacts;
 	}
-	public void searchByState(String state) { //Search by State
+	public int searchByState(String state) { //Search by State
 	
 		Set<String> allKeys = contacts.keySet();
-		
+		int numOfContaacts = 0;
+
 		for(String key : allKeys) {
 			
 			DetailsCollector allDetails = contacts.get(key);
@@ -304,8 +309,11 @@ public class AddressBookManupulator {
 			//System.out.println(allDetails);
 			String getState = allDetails.getState();
 
-			if(getState.contains(state))
+			if(getState.contains(state)) {
 				System.out.println("Name : "+allDetails.getFirstName()+" "+allDetails.getLastName()+"\tEmail : "+allDetails.getEmailId());
+				numOfContaacts++;
+			}
 		}
+		return numOfContaacts;
 	}
 }
